@@ -1,9 +1,12 @@
 package com.ubosque.deliverylab;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.ubosque.deliverylab.adapters.StoreAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RecyclerView storeListView = findViewById(R.id.store_layout_view);
+        String[] dataSet = {"El corral", "KFC", "Fridays"};
+        storeListView.setAdapter(new StoreAdapter(dataSet));
     }
 
     @Override
