@@ -69,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         storeTask.execute();
 
-        /*List<Store> dataSet = new ArrayList<>();
-        dataSet.add(new Store(1, "El Corral", "Hamburguesas", "Carnes", ""));
-        dataSet.add(new Store(2, "KFC", "Pollo", "Carnes", ""));
-        dataSet.add(new Store(3, "Fridays", "Pizza", "Pastas", ""));
-        storeListView.setAdapter(new StoreAdapter(dataSet));*/
-
     }
 
     @Override
