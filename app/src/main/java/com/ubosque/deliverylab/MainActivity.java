@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ubosque.deliverylab.adapters.StoreAdapter;
 import com.ubosque.deliverylab.model.Store;
@@ -57,12 +60,20 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "DeliveryLabMainActivity";
 
     private RecyclerView storeListView;
+    private TextView userAddressTextView;
+
+    private String currentAddress = "No Seleccionado";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         storeListView = findViewById(R.id.store_layout_view);
+        userAddressTextView = findViewById(R.id.txtUserAddress);
+
+        userAddressTextView.setOnClickListener(view ->
+                startActivity(new Intent(this, SetAddressActivity.class)));
+
         storeListView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
         GetStoreTask storeTask = new GetStoreTask();
@@ -74,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        userAddressTextView.setText(currentAddress);
         Log.i(TAG, "En el metodo start");
     }
 
